@@ -8,4 +8,4 @@ print("sys.argv is of type {0}".format(type(sys.argv)))
 prog_name = sys.argv[0]
 N = sys.argv[1]
 
-print("{0} says: Hello {1}").format(prog_name, N)
+print("{0} says: Hello {1}".format(prog_name, N))

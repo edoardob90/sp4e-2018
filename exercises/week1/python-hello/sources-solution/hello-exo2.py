@@ -12,8 +12,8 @@ def main():
     prog_name = sys.argv[0]
     N = int(sys.argv[1])
 
-    print("{0} says: Hello {1} {2}").format(
-        prog_name, series.computeSeries(N), N*(N+1)/2)
+    print("{0} says: Hello {1} {2}".format(
+        prog_name, series.computeSeries(N), N*(N+1)/2))
 
 
 if __name__ == '__main__':
