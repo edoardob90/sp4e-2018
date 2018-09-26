@@ -1,4 +1,5 @@
 *~
 *.o
 work/.idea
-**/build
+**/build*
+**/a.out
