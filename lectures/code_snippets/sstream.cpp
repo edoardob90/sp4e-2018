@@ -1,14 +1,15 @@
+#include <iostream>
 #include <sstream>
 
-int main(int argc, char **argv) {
-  std::stringstream sstr;
-  for (int i = 1; i < argc; ++i) {
-    sstr << argv[i] << " ";
-  }
+int main() {
+  std::stringstream sstr("1 2 3.14");
+  int i, j;
+  double k;
 
-  double arg1;
-  sstr >> arg1;
+  sstr >> i >> j >> k;
+  std::cout << i << " " << j << " " << k << std::endl;
 
-  int arg2;
-  sstr >> arg2;
+  std::stringstream sstr2;
+  sstr2 << 142;
+  std::cout << sstr2.str() << std::endl;
 }

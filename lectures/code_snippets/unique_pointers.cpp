@@ -1,7 +1,10 @@
 #include <iostream>
 #include <memory>
 
-std::unique_ptr<double> get_scalar() { return std::make_unique<double>(3); }
+std::unique_ptr<double> get_scalar() {
+  // create a unique pointer
+  return std::make_unique<double>(3);
+}
 
 int main() {
 
