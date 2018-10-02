@@ -11,9 +11,7 @@ int main() {
 
   foo2();
 
-  auto foo3 = [](int a, double b) {
-    std::cout << "Hey again again !" << std::endl;
-  };
+  auto foo3 = [](int a, double b) { std::cout << a << "," << b << std::endl; };
 
   foo3(10, 102.3);
 
