@@ -3568,15 +3568,13 @@ div.slide{
             </style>
             <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp"></span>
 
-<span class="k">enum</span> <span class="n">ParticleType</span> <span class="p">{</span> <span class="n">_pt_planet</span><span class="p">,</span> <span class="n">_pt_star</span><span class="p">,</span> <span class="n">_pt_atom</span><span class="p">,</span> <span class="n">_pt_ball</span> <span class="p">};</span>
-
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">ParticleType</span><span class="o">&gt;</span> <span class="n">particle_types</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">particle_mass</span><span class="p">;</span>
 
-  <span class="n">particle_types</span><span class="p">[</span><span class="s">&quot;mars&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pt_planet</span><span class="p">;</span>
-  <span class="n">particle_types</span><span class="p">[</span><span class="s">&quot;sun&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pt_star</span><span class="p">;</span>
-  <span class="n">particle_types</span><span class="p">[</span><span class="s">&quot;copper&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pt_atom</span><span class="p">;</span>
+  <span class="n">particle_mass</span><span class="p">[</span><span class="s">&quot;mars&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">6.4171e23</span><span class="p">;</span>
+  <span class="n">particle_mass</span><span class="p">[</span><span class="s">&quot;sun&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.9885e30</span><span class="p">;</span>
+  <span class="n">particle_mass</span><span class="p">[</span><span class="s">&quot;copper&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0552061e-25</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
