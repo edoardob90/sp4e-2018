@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.6)
+set(CMAKE_CXX_FLAGS "-stdlib=libc++ -std=c++11")
+#add_executable(main stack.cpp)
+add_executable(memory_first memory_first.cc)
+#add_executable(memory_second memory_second.cc)
+#add_executable(memory_third memory_third.cc)
