@@ -2,7 +2,11 @@ from __future__ import print_function
 import numpy as np
 
 
-def solve(A, b, x_old, max_iter=50, tol=1e-8):
+def solve(A, b, x_old, max_iter=50, tol=1e-8, callback=None):
+
+    if callback:
+        callback(x_old)
+
     solutions = []
     solutions.append(x_old)
 
@@ -19,11 +23,13 @@ def solve(A, b, x_old, max_iter=50, tol=1e-8):
         x_new = x_old + alpha * p_old
         r_new = r_old - alpha * Ap_old
 
-        solutions.append(x_new)
+        if callback:
+            callback(x_new)
+
         convergence = testConvergence(x_new, x_old, tol)
 
         if convergence:
-            return x_new, solutions
+            return x_new
 
         beta = np.einsum('i,i->', r_new, r_new) / np.einsum('i,i->', r_old,
                                                             r_old)
