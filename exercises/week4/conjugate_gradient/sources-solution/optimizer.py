@@ -33,8 +33,8 @@ def plot(func, sol_steps, title):
 
 
 def cgSolve(fun, A, b, x0, max_iter, tol):
-    res, sol_steps = cg.solve(A, b, x0, max_iter=max_iter,
-                              tol=tol)
+    res = cg.solve(A, b, x0, max_iter=max_iter,
+                   tol=tol, callback=getIterationSteps)
     plot(fun, sol_steps, 'Conjugate Gradient')
     return res
 
