@@ -36,7 +36,9 @@ def plot(func, iterations, title):
 def solve(fun, x0, tol='1e-8', callback=None, **kwargs):
     'Minimize function with BFGS'
 
-    res = scipy.optimize(fun, x0, method='BFGS',
-                         callback=callback,
-                         tol=tol)
+    res = scipy.optimize.minimize(
+        fun, x0, method='BFGS',
+        callback=callback,
+        tol=tol)
+
     return res.x
