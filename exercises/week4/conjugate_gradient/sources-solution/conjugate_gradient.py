@@ -1,48 +1,50 @@
-from __future__ import print_function
+#!/usr/bin/env python3
+
 import numpy as np
 
 
-def solve(A, b, x_old, max_iter=50, tol=1e-8, callback=None):
+def solve(func, x0, jac=None, hess=None,
+          max_iter=50, tol=1e-8,
+          callback=None):
+    'Minimize function with home-made conjugate gradient'
 
-    if callback:
-        callback(x_old)
+    if jac is None:
+        raise RuntimeError('this method needs a jacobian to be provided')
 
-    solutions = []
-    solutions.append(x_old)
+    if hess is None:
+        raise RuntimeError('this method needs a hessian to be provided')
 
-    r_old = b - np.einsum('ij,j->i', A, x_old)
+    x_old = x0
+    r_old = -jac(x0)
     p_old = r_old
 
-    iiter = 0
-    convergence = False
-    while iiter <= max_iter:
+    # conjugate iteration loop
+    for i in range(0, max_iter):
+
+        # fetch the hessian
+        A = hess(x_old)
+
         Ap_old = np.einsum('ij,j->i', A, p_old)
-        alpha = float(np.einsum('i,i->', r_old, r_old)) / float(
-            np.einsum('i,i->', p_old, Ap_old))
+
+        alpha = (np.einsum('i,i->', r_old, r_old) /
+                 np.einsum('i,i->', p_old, Ap_old))
 
         x_new = x_old + alpha * p_old
         r_new = r_old - alpha * Ap_old
 
+        # call the callback over iterations
         if callback:
             callback(x_new)
 
-        convergence = testConvergence(x_new, x_old, tol)
-
-        if convergence:
+        # evaluate stop criterion
+        if np.linalg.norm(x_new-x_old) < tol:
             return x_new
 
-        beta = np.einsum('i,i->', r_new, r_new) / np.einsum('i,i->', r_old,
-                                                            r_old)
+        beta = (np.einsum('i,i->', r_new, r_new) /
+                np.einsum('i,i->', r_old, r_old))
+
         p_old = r_new + beta * p_old
         r_old = r_new
         x_old = x_new
 
-        iiter += 1
-
     return False
-
-
-def testConvergence(x_new, x_old, tol):
-    delta = x_new - x_old
-    error = np.linalg.norm(delta)
-    return error < tol
