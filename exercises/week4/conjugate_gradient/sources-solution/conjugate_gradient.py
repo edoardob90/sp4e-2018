@@ -18,8 +18,10 @@ def solve(func, x0, jac=None, hess=None,
     r_old = -jac(x0)
     p_old = r_old
 
+    # conjugate iteration loop
     for i in range(0, max_iter):
 
+        # fetch the hessian
         A = hess(x_old)
 
         Ap_old = np.einsum('ij,j->i', A, p_old)
@@ -30,9 +32,11 @@ def solve(func, x0, jac=None, hess=None,
         x_new = x_old + alpha * p_old
         r_new = r_old - alpha * Ap_old
 
+        # call the callback over iterations
         if callback:
             callback(x_new)
 
+        # evaluate stop criterion
         if np.linalg.norm(x_new-x_old) < tol:
             return x_new
 
