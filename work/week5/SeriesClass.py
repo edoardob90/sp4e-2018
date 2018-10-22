@@ -4,50 +4,55 @@ class Series:
     Series main class (abstract)
     """
     def __init__(self):
-        pass
+        self.current_step = 0
+        self.current_result = 0.
 
     def compute(self, N):
-        raise Exception("pure virtual function!")
+        if self.current_step <= N:
+            N -= self.current_step
+        else:
+            self.current_step = 0
+            self.current_result = 0.
 
-# I don't know if this will work (probably not)
-#    def printResult(self):
-#        print("For {:s} the result is {:f}".format(self.name, self.result))
+        for k in range(0,N):
+            self.addTerm()
+
+    def addTerm(self):
+        self.current_step += 1
+        self.current_result += self.computeTerm(self.current_result)
+    
+    def computeTerm(self, k):
+        pass
+
 
 # Arithmetic computation class
 class ComputeArithmetic(Series):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.step = 0
-        self.result = 0
         self.name = "Arithmetic series"
 
     def compute(self, N=100):
-        for i in range(1,N+1):
-            self.step += 1
-            self.result += i
+        super().compute(N)
         return self.result
     
-#    def printResult(self):
-#        print("For {:s} the result is {:d}".format(self.name, self.result))
+    def computeTerm(self, k):
+        return float(k)
 
 # Pi computation class
 class ComputePi(Series):
+
     # We need the square root here
     math = __import__('math')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = "Pi series"
-        self.result = 0.
 
     def compute(self, N):
-        for i in range(1,N+1):
-            self.result += 1/float(i)**2
-        self.result = self.math.sqrt(6*self.result)
-        return self.result
+        super().compute(N)
+        return math.sqrt(6.*self.current_result)
 
-#    def printResult(self):
-#        print("For {:s} the result is {:f}".format(self.name, self.result))
-
+    def computeTerm(self, k):
+        return 1./k**2.
 
 

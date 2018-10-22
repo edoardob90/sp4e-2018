@@ -7,9 +7,13 @@ class DumperSeries(object):
         self.series = series
         self.name =  "Dumper for " + series.name
         self.step = series.step
+        self.precision = 4
 
     def dump(self):
         raise Exception("Pure virtual function of abstrac class DumperSeries!")
+
+    def __str__(self):
+        return self.dump()
 
 class PrintSeries(DumperSeries):
     """
@@ -17,11 +21,16 @@ class PrintSeries(DumperSeries):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.maxiter = 500
-        self.freq = 10
+        # freq and maxiter should be read from input
+        self.maxiter = maxiter
+        self.freq = freq
 
-    def dump(self, N=100):
-        print("{:s}".format(self.name))
-        print(type(self.step))
-        print("Result for {:s} after {:d}: {:}".format(self.name, self.step, self.series.compute(N)) )
+    def dump(self):
+        output = ""
+        for i in range(1, int(self.maxiter/self.freq)):
+            res = self.series.compute(i*self.freq-1)
+            res2 = self.series.compute(i*self.freq)
+
+        output += "\n"
+        return output
 
