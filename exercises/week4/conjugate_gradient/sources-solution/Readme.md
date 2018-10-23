@@ -9,7 +9,7 @@ This will produce one graph using one optimizer .
 In order to change the method you can do:
 
 python3 ./main.py -m cg
-python3 ./main.py -m 
+python3 ./main.py -m BFGS
 
 as asdvertised by the help:
 

@@ -1,22 +1,23 @@
-from __future__ import print_function
+#!/usr/bin/env python3
+
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
-import conjugate_gradient as cg
-from scipy.optimize import minimize
-
-sol_steps = []
+import scipy.optimize
+from mpl_toolkits.mplot3d import Axes3D
 
 
-def plot(func, sol_steps, title):
+def plot(func, iterations, title):
+    'Plotting function for plane and iterations'
 
     x = np.linspace(-3, 3, 100)
     y = np.linspace(-3, 3, 100)
     x, y = np.meshgrid(x, y)
-    z = func([x, y])
 
-    xy = np.stack(sol_steps, axis=0)
-    zs = func([xy[:, 0], xy[:, 1]])
+    X = np.stack([x.flatten(), y.flatten()], axis=1)
+    z = func(X).reshape((100, 100))
+
+    xy = np.array(iterations)
+    zs = func(xy)
 
     fig = plt.figure()
     ax = Axes3D(fig)
@@ -32,20 +33,12 @@ def plot(func, sol_steps, title):
     plt.show()
 
 
-def cgSolve(fun, A, b, x0, max_iter, tol):
-    res, sol_steps = cg.solve(A, b, x0, max_iter=max_iter,
-                              tol=tol)
-    plot(fun, sol_steps, 'Conjugate Gradient')
-    return res
+def solve(fun, x0, tol='1e-8', callback=None, **kwargs):
+    'Minimize function with BFGS'
 
+    res = scipy.optimize.minimize(
+        fun, x0, method='BFGS',
+        callback=callback,
+        tol=tol)
 
-def scipySolve(fun, x0, max_iter, tol):
-    sol_steps.append(x0)
-    res = minimize(fun, x0, method='BFGS', callback=getIterationSteps,
-                   tol=tol)
-    plot(fun, sol_steps, 'BFGS')
     return res.x
-
-
-def getIterationSteps(Xi):
-    sol_steps.append(Xi)
