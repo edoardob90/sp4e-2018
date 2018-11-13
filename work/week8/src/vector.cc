@@ -8,7 +8,7 @@ const Real& Vector::operator[](UInt i) const {
 }
 
 Real Vector::squaredNorm() const {
-    Real norm;
+    Real norm = 0.;
     for (const Real& elem : values) norm += elem*elem;
     return norm;
 }
@@ -16,34 +16,34 @@ Real Vector::squaredNorm() const {
 /* -------------------------------------------------------------------------- */
 
 Vector& Vector::operator+=(const Vector& vec) {
-    for (UInt i=0; i<this->dim; ++i) (*this)[i] += vec[i];
+    for (UInt i=0; i<Vector::dim; ++i) (*this)[i] += vec[i];
     return *this;
 }
 
 Vector& Vector::operator-=(const Vector& vec) {
-    for (UInt i=0; i<this->dim; ++i) (*this)[i] -= vec[i];
+    for (UInt i=0; i<Vector::dim; ++i) (*this)[i] -= vec[i];
   return *this;
 }
 
 Vector& Vector::operator*=(Real val) {
-    for (UInt i=0; i<this->dim; ++i) (*this)[i] *= val;
+    for (UInt i=0; i<Vector::dim; ++i) (*this)[i] *= val;
   return *this;
 }
 
 Vector& Vector::operator/=(Real val) {
-    for (UInt i=0; i<this->dim; ++i) (*this)[i] /= val;
+    for (UInt i=0; i<Vector::dim; ++i) (*this)[i] /= val;
   return *this;
 }
 
 /* -------------------------------------------------------------------------- */
 
 Vector& Vector::operator=(const Vector& vec) {
-    for (UInt i=0; i<this->dim; ++i) (*this)[i] = vec[i];
+    for (UInt i=0; i<Vector::dim; ++i) (*this)[i] = vec[i];
     return *this;
 }
 
 Vector& Vector::operator=(Real val) {
-    for (UInt i=0; i<this->dim; ++i) (*this)[i] = val;
+    for (UInt i=0; i<Vector::dim; ++i) (*this)[i] = val;
     return *this;
 }
 
@@ -54,31 +54,31 @@ Vector& Vector::operator=(Real val) {
  */
 Vector operator+(const Vector& a, const Vector& b) {
     Vector result;
-    for (UInt i=0; i<result.dim; ++i) result[i] = a[i] + b[i];
+    for (UInt i=0; i<Vector::dim; ++i) result[i] = a[i] + b[i];
     return result;
 }
 
 Vector operator-(const Vector& a, const Vector& b) {
     Vector result;
-    for (UInt i=0; i<result.dim; ++i) result[i] = a[i] - b[i];
+    for (UInt i=0; i<Vector::dim; ++i) result[i] = a[i] - b[i];
     return result;
 }
 
 Vector operator*(const Vector& a, Real val) {
     Vector result;
-    for (UInt i=0; i<result.dim; ++i) result[i] = a[i] * val;
+    for (UInt i=0; i<Vector::dim; ++i) result[i] = a[i] * val;
     return result;
 }
 
 Vector operator*(Real val, const Vector& a) {
     Vector result;
-    for (UInt i=0; i<result.dim; ++i) result[i] = a[i] * val;
+    for (UInt i=0; i<Vector::dim; ++i) result[i] = a[i] * val;
     return result;
 }
 
 Vector operator/(const Vector& a, Real val) {
     Vector result;
-    for (UInt i=0; i<result.dim; ++i) result[i] = a[i] / val;
+    for (UInt i=0; i<Vector::dim; ++i) result[i] = a[i] / val;
     return result;
 }
 
