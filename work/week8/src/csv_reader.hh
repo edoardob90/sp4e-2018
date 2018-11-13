@@ -4,6 +4,11 @@
 /* -------------------------------------------------------------------------- */
 #include "compute.hh"
 #include <string>
+/* I added the following include here
+ * I think that this class needs a (private or protected) member for the input strem
+ */ 
+#include <fstream>
+#include <sstream>
 
 //! Read system from csv input file
 class CsvReader : public Compute {
@@ -26,6 +31,7 @@ public:
 
 protected:
   std::string filename;
+  std::ifstream input_stream;
 };
 
 /* -------------------------------------------------------------------------- */
