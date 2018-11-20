@@ -1,7 +1,0 @@
-<map id="compute_energy.hh" name="compute_energy.hh">
-<area shape="rect" id="node2" href="$compute__energy_8cc.html" title="compute_energy.cc" alt="" coords="5,80,141,107"/>
-<area shape="rect" id="node3" href="$compute__kinetic__energy_8hh.html" title="compute_kinetic_energy.hh" alt="" coords="165,80,347,107"/>
-<area shape="rect" id="node5" href="$compute__potential__energy_8hh.html" title="compute_potential_energy.hh" alt="" coords="371,80,563,107"/>
-<area shape="rect" id="node4" href="$compute__kinetic__energy_8cc.html" title="compute_kinetic_energy.cc" alt="" coords="165,155,347,181"/>
-<area shape="rect" id="node6" href="$compute__potential__energy_8cc.html" title="compute_potential_energy.cc" alt="" coords="371,155,563,181"/>
-</map>
