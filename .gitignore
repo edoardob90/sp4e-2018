@@ -1,2 +1,5 @@
 *~
 *.o
+*.zip
+html
+build
