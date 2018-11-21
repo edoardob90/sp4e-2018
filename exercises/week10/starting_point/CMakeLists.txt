@@ -1,5 +1,4 @@
-
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.1)
 project (Particles)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -26,9 +25,15 @@ add_library(part
   compute_interaction.cc)
 
 add_executable(particles main.cc)
-target_link_libraries(particles gtest_main gtest pthread part)
+target_link_libraries(particles part)
 
+include(GoogleTest)
+enable_testing()
+find_package(GTest)
+if (GTEST_FOUND)
+include_directories(${GTEST_INCLUDE_DIRS})
 add_executable(test_kepler test_kepler.cc)
-target_link_libraries(test_kepler gtest_main gtest pthread part)
-
-add_custom_target(test ./test_kepler DEPENDS part test_kepler)
+message(${GTEST_LIBRARIES})
+target_link_libraries(test_kepler part ${GTEST_BOTH_LIBRARIES} pthread)
+gtest_discover_tests(test_kepler)
+endif()
