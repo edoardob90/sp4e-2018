@@ -4,3 +4,6 @@ work/.idea
 **/*build*
 **/a.out
 homeworks/*
+*.zip
+html
+build

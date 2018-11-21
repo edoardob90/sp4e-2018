@@ -1,5 +1,0 @@
-<map id="ComputeInteraction" name="ComputeInteraction">
-<area shape="rect" id="node3" href="$class_compute_contact.html" title="Compute contact interaction between ping&#45;pong balls. " alt="" coords="5,155,127,181"/>
-<area shape="rect" id="node4" href="$class_compute_gravity.html" title="Compute Newton gravity interaction. " alt="" coords="151,155,269,181"/>
-<area shape="rect" id="node2" href="$class_compute.html" title="Base class for all compute. " alt="" coords="101,5,175,32"/>
-</map>
