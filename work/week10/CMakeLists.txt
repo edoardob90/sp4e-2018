@@ -1,39 +1,52 @@
-cmake_minimum_required (VERSION 3.1)
-project (Particles)
+cmake_minimum_required(VERSION 3.0)
+project(particles)
 
 set(CMAKE_CXX_STANDARD 14)
 
+include_directories(src)
+
 add_library(part
-  vector.cc
-  compute_boundary.cc
-  compute_verlet_integration.cc 
-  particle.cc 
-  planet.cc
-  compute_gravity.cc 
-  csv_reader.cc 
-  particles_factory_interface.cc 
-  planets_factory.cc 
-  compute_contact.cc 
-  compute_kinetic_energy.cc 
-  csv_writer.cc 
-  system.cc 
-  compute_energy.cc 
-  compute_potential_energy.cc 
-  ping_pong_ball.cc 
-  system_evolution.cc 
-  ping_pong_balls_factory.cc 
-  compute_interaction.cc)
+        src/compute.hh
+        src/compute_boundary.cc
+        src/compute_boundary.hh
+        src/compute_contact.cc
+        src/compute_contact.hh
+        src/compute_energy.cc
+        src/compute_energy.hh
+        src/compute_gravity.cc
+        src/compute_gravity.hh
+        src/compute_interaction.cc
+        src/compute_interaction.hh
+        src/compute_kinetic_energy.cc
+        src/compute_kinetic_energy.hh
+        src/compute_potential_energy.cc
+        src/compute_potential_energy.hh
+        src/compute_verlet_integration.cc
+        src/compute_verlet_integration.hh
+        src/csv_reader.cc
+        src/csv_reader.hh
+        src/csv_writer.cc
+        src/csv_writer.hh
+        src/my_types.hh
+        src/particle.cc
+        src/particle.hh
+        src/particles_factory_interface.cc
+        src/particles_factory_interface.hh
+        src/ping_pong_ball.cc
+        src/ping_pong_ball.hh
+        src/ping_pong_balls_factory.cc
+        src/ping_pong_balls_factory.hh
+        src/planet.cc
+        src/planet.hh
+        src/planets_factory.cc
+        src/planets_factory.hh
+        src/system.cc
+        src/system.hh
+        src/system_evolution.cc
+        src/system_evolution.hh
+        src/test_kepler.cc
+        src/vector.cc
+        src/vector.hh)
 
-add_executable(particles main.cc)
+add_executable(particles src/main.cc)
 target_link_libraries(particles part)
-
-include(GoogleTest)
-enable_testing()
-find_package(GTest)
-if (GTEST_FOUND)
-include_directories(${GTEST_INCLUDE_DIRS})
-add_executable(test_kepler test_kepler.cc)
-message(${GTEST_LIBRARIES})
-target_link_libraries(test_kepler part ${GTEST_BOTH_LIBRARIES} pthread)
-gtest_discover_tests(test_kepler)
-endif()
