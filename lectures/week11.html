@@ -448,7 +448,7 @@ collect2: error: ld returned 1 exit status
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&gt; g++ tmp.cc
 
-/usr/bin/ld: /tmp/ccBm3FIK.o: in function `main&#39;:
+/usr/bin/ld: /tmp/ccN3AVEO.o: in function `main&#39;:
 tmp.cc:(.text+0x1b): undefined reference to `gsl_sf_bessel_J0&#39;
 collect2: error: ld returned 1 exit status
 
@@ -723,14 +723,14 @@ collect2: error: ld returned 1 exit status
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&gt; ldd exe
 
-	linux-vdso.so.1 (0x00007ffe6cbf7000)
-	libgsl.so.23 =&gt; /lib/x86_64-linux-gnu/libgsl.so.23 (0x00007f352b5b9000)
-	libstdc++.so.6 =&gt; /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f352b436000)
-	libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f352b2a2000)
-	libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f352b288000)
-	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f352b0cb000)
-	libgslcblas.so.0 =&gt; /lib/x86_64-linux-gnu/libgslcblas.so.0 (0x00007f352b08a000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f352b873000)
+	linux-vdso.so.1 (0x00007ffe0acfa000)
+	libgsl.so.23 =&gt; /lib/x86_64-linux-gnu/libgsl.so.23 (0x00007f434ca37000)
+	libstdc++.so.6 =&gt; /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f434c8b4000)
+	libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f434c720000)
+	libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f434c706000)
+	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f434c549000)
+	libgslcblas.so.0 =&gt; /lib/x86_64-linux-gnu/libgslcblas.so.0 (0x00007f434c508000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f434ccf1000)
 
 </pre>
 </div>
@@ -780,7 +780,7 @@ collect2: error: ld returned 1 exit status
 
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&gt; find /usr/lib/x86_64-linux-gnu/ -name &#39;*.so&#39; -exec nm -DAC &#39;{}&#39; &#39;;&#39; | grep &#39;gsl_sf_bessel_J0&#39;
+<pre>&gt; nm -DAC /lib/x86_64-linux-gnu/libm.so.6
 </pre>
 </div>
 </div>
