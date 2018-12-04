@@ -780,6 +780,18 @@ collect2: error: ld returned 1 exit status
 
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; find /usr/lib/x86_64-linux-gnu/ -name &#39;*.so&#39; -exec nm -DAC &#39;{}&#39; &#39;;&#39; | grep &#39;gsl_sf_bessel_J0&#39;
+</pre>
+</div>
+</div>
+
+</div>
+</div><div class="full" style="width: 100%; float: left">
+
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>/lib/x86_64-linux-gnu/libm.so.6:000000000000e910 W acos
 /lib/x86_64-linux-gnu/libm.so.6:0000000000011f40 W acosf
 /lib/x86_64-linux-gnu/libm.so.6:0000000000074b30 W acosf128
