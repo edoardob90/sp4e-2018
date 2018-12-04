@@ -264,7 +264,7 @@ div.slide{
 <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
 </pre></div>
 <ul>
-<li>Python interpreter searches modules in the form *.py files, or directories with <strong>init</strong>.py files</li>
+<li>Python interpreter searches modules in the form *.py files, or directories with __init__.py files</li>
 <li>Search through standard paths (/usr/lib/python3.6/)</li>
 <li>Search through path provided in an environment variable PYTHONPATH (edit .bashrc to extend the list)</li>
 <li>can see such a list with:</li>
@@ -289,14 +289,21 @@ div.slide{
 </pre></div>
 <ul>
 <li>At compilation, g++ searches through standard paths (such as /usr/bin/include) </li>
-<li><p>Extending the list can be done with the option '-I':</p>
-<div class="highlight"><pre><span></span>&gt; g++ -c -Imynew_path file.cc
+<li>Extending the list can be done with the option '-I':<div class="highlight"><pre><span></span>&gt; g++ -c -Imynew_path file.cc
 </pre></div>
 </li>
-<li><p>Link edition (Linking): produces executables/libraries from .o files and libraries with '-l' option</p>
-</li>
+</ul>
+
+</div>
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Link edition (Linking): produces executables/libraries from .o files and libraries with '-l' option</li>
 <li>At compilation, g++ searches through standard paths (such as /usr/lib) </li>
-<li>Extend the list can be done with the option '-L' <div class="highlight"><pre><span></span>&gt; g++ file1.o file2.o -L~/libpath/ -o <span class="nb">exec</span>
+<li>Extend the list can be done with the option '-L' <div class="highlight"><pre><span></span>&gt; g++ file1.o file2.o -L/some_path/ -lmylib -o <span class="nb">exec</span>
 </pre></div>
 </li>
 </ul>
@@ -312,9 +319,7 @@ div.slide{
 </ul>
 
 </div>
-</div></div>
-</section><section>
-<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+</div><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -341,9 +346,7 @@ collect2: error: ld returned 1 exit status
 </ul>
 
 </div>
-</div></div>
-</section><section>
-<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+</div><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -445,7 +448,7 @@ collect2: error: ld returned 1 exit status
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&gt; g++ tmp.cc
 
-/usr/bin/ld: /tmp/ccXkvsyR.o: in function `main&#39;:
+/usr/bin/ld: /tmp/ccBm3FIK.o: in function `main&#39;:
 tmp.cc:(.text+0x1b): undefined reference to `gsl_sf_bessel_J0&#39;
 collect2: error: ld returned 1 exit status
 
@@ -454,7 +457,9 @@ collect2: error: ld returned 1 exit status
 </div>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
@@ -462,9 +467,7 @@ collect2: error: ld returned 1 exit status
 </ul>
 
 </div>
-</div></div>
-</section><section>
-<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+</div><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -478,7 +481,9 @@ collect2: error: ld returned 1 exit status
 </div>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
@@ -486,9 +491,7 @@ collect2: error: ld returned 1 exit status
 </ul>
 
 </div>
-</div></div>
-</section><section>
-<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+</div><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -582,7 +585,7 @@ collect2: error: ld returned 1 exit status
 
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&gt; gcc tmp.cc
+<pre>&gt; g++ tmp.cc
 
 
 </pre>
@@ -590,7 +593,9 @@ collect2: error: ld returned 1 exit status
 </div>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Static-libraries">Static libraries<a class="anchor-link" href="#Static-libraries">&#182;</a></h2><ul>
@@ -599,6 +604,13 @@ collect2: error: ld returned 1 exit status
 <li>The final executable statically linked includes all the libraries (big executable file)</li>
 <li>carry dependencies but not portable</li>
 </ul>
+
+</div>
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dynamic-libraries">Dynamic libraries<a class="anchor-link" href="#Dynamic-libraries">&#182;</a></h2><ul>
 <li><a href="https://en.wikipedia.org/wiki/Library_(computing">Dynamic/Shared libraries</a>#Shared_libraries) are loaded on demand by executables. </li>
 <li>Shared libraries can be statically linked or dynamically loaded.</li>
@@ -606,7 +618,9 @@ collect2: error: ld returned 1 exit status
 </ul>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -701,9 +715,7 @@ collect2: error: ld returned 1 exit status
 </div>
 
 </div>
-</div></div>
-</section><section>
-<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+</div><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -711,21 +723,23 @@ collect2: error: ld returned 1 exit status
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&gt; ldd exe
 
-	linux-vdso.so.1 (0x00007ffeb9b0c000)
-	libgsl.so.23 =&gt; /lib/x86_64-linux-gnu/libgsl.so.23 (0x00007f98cd54c000)
-	libstdc++.so.6 =&gt; /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f98cd3c9000)
-	libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f98cd235000)
-	libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f98cd21b000)
-	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f98cd05e000)
-	libgslcblas.so.0 =&gt; /lib/x86_64-linux-gnu/libgslcblas.so.0 (0x00007f98cd01d000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f98cd806000)
+	linux-vdso.so.1 (0x00007ffe6cbf7000)
+	libgsl.so.23 =&gt; /lib/x86_64-linux-gnu/libgsl.so.23 (0x00007f352b5b9000)
+	libstdc++.so.6 =&gt; /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f352b436000)
+	libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f352b2a2000)
+	libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f352b288000)
+	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f352b0cb000)
+	libgslcblas.so.0 =&gt; /lib/x86_64-linux-gnu/libgslcblas.so.0 (0x00007f352b08a000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f352b873000)
 
 </pre>
 </div>
 </div>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Scrutinizing-a-library">Scrutinizing a library<a class="anchor-link" href="#Scrutinizing-a-library">&#182;</a></h2><ul>
@@ -736,9 +750,7 @@ collect2: error: ld returned 1 exit status
 <p>Listing the <strong>Symbols</strong> from a library:</p>
 
 </div>
-</div></div>
-</section><section>
-<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
+</div><div class="full" style="width: 100%; float: left">
 
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -785,7 +797,7 @@ collect2: error: ld returned 1 exit status
 <ul>
 <li>U: undefined symbol $\Rightarrow$ used in the library not defined</li>
 <li>T: text symbol $\Rightarrow$ used in the library and defined in the library</li>
-<li>W: weak symbol $\Rightarrow$ used in the library, defined but can be overloaded with a T symbol ()</li>
+<li>W: weak symbol $\Rightarrow$ used in the library, defined but can be overloaded with a T symbol</li>
 </ul>
 
 </div>
@@ -864,8 +876,8 @@ collect2: error: ld returned 1 exit status
 <ul>
 <li><a href="https://cmake.org/cmake/help/v3.13/manual/cmake-variables.7.html">special variables</a></li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">example:</span> <span class="err">${PROJECT_BINARY_DIR}</span> <span class="err">${PROJECT_SOURCE_DIR}</span>
-</pre></div>
+
+<pre><code>example: ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR}</code></pre>
 
 </div>
 </div></div>
@@ -896,12 +908,14 @@ collect2: error: ld returned 1 exit status
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Creating-a-library">Creating a library<a class="anchor-link" href="#Creating-a-library">&#182;</a></h2><div class="highlight"><pre><span></span><span class="nb">add_library</span><span class="p">(</span><span class="s">mylib</span> <span class="s">file1.cc</span> <span class="s">file2.cc</span><span class="p">)</span>
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">exe</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">exe</span> <span class="s">main.cc</span><span class="p">)</span>
 <span class="nb">target_link_libraries</span> <span class="p">(</span><span class="s">exe</span> <span class="s">gsl</span> <span class="s">mylib</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Making-options">Making options<a class="anchor-link" href="#Making-options">&#182;</a></h2><div class="highlight"><pre><span></span><span class="c"># should we use our own math functions?</span>
@@ -913,20 +927,22 @@ collect2: error: ld returned 1 exit status
 </pre></div>
 
 </div>
-</div><div class="full" style="width: 100%; float: left">
+</div></div>
+</section><section>
+<div class="slide" style="float: left"><div class="full" style="width: 100%; float: left">
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Finding-libraries">Finding libraries<a class="anchor-link" href="#Finding-libraries">&#182;</a></h2><ul>
 <li>For the library files</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">GSL_LIBRARY_PATH</span> <span class="s">CACHE</span> <span class="s">PATH</span> <span class="s2">&quot;library where to search libgsl&quot;</span><span class="p">)</span>
-<span class="nb">find_library</span> <span class="p">(</span><span class="s">GSL_LIBRARY</span> <span class="s">libgsl</span> <span class="s">/usr/include/</span> <span class="o">${</span><span class="nv">GSL_LIBRARY_PATH</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">find_library</span> <span class="p">(</span><span class="s">GSL_LIBRARY</span> <span class="s">libgsl</span> <span class="o">${</span><span class="nv">GSL_LIBRARY_PATH</span><span class="o">}</span> <span class="s">/usr/lib</span><span class="p">)</span>
 </pre></div>
 <ul>
 <li>For the include files</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">GSL_INCLUDE_PATH</span> <span class="s">CACHE</span> <span class="s">PATH</span> <span class="s2">&quot;path where to search gsl include files&quot;</span><span class="p">)</span>
-<span class="nb">find_file</span><span class="p">(</span><span class="s">GSL_INCLUDE</span> <span class="s">gsl_root.h</span> <span class="s">/usr/include/</span> <span class="o">${</span><span class="nv">GSL_INCLUDE_PATH</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">find_path</span><span class="p">(</span><span class="s">GSL_INCLUDE</span> <span class="s">gsl_root.h</span> <span class="o">${</span><span class="nv">GSL_INCLUDE_PATH</span><span class="o">}</span> <span class="s">/usr/include/</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -971,11 +987,6 @@ $$[DFT^{-1}(\hat{x})]_i = x_i = \frac{1}{N}\sum_{i=0}^{N-1} \hat{x}_k \cdot e^{\
 </pre></div>
 </li>
 </ul>
-
-</div>
-</div><div class="full" style="width: 100%; float: left">
-
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
 </div></div>
