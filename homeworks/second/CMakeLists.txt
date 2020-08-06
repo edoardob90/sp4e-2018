@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.6)
+project(homework2)
+set(CMAKE_CXX_STANDARD 14)
+set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+add_subdirectory(src)
